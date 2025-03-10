@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://d01f1l888fsxx"]
+
+[ext_resource type="PackedScene" uid="uid://cihfdlicn0v31" path="res://scenes/player.tscn" id="1_wy35o"]
+[ext_resource type="Texture2D" uid="uid://d2g1k0wcw4x7h" path="res://DoorUnlocked.png" id="1_x8kg7"]
+[ext_resource type="Texture2D" uid="uid://c4jgi5mwcgqbp" path="res://Tile (15).png" id="2_05twb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74jl7"]
+size = Vector2(33, 15)
+
+[node name="level_3" type="Node2D"]
+
+[node name="puerta inicio" type="Sprite2D" parent="."]
+position = Vector2(18, 229)
+scale = Vector2(0.0687278, 0.0832435)
+texture = ExtResource("1_x8kg7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(17.75, 259.75)
+scale = Vector2(0.238281, 0.183594)
+texture = ExtResource("2_05twb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(17.5, 257.5)
+shape = SubResource("RectangleShape2D_74jl7")
+
+[node name="player" parent="." instance=ExtResource("1_wy35o")]
+position = Vector2(22, 230)

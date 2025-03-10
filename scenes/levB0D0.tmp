@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://gk38sckwjo3y"]
+
+[ext_resource type="Texture2D" uid="uid://vwwg22slyvtm" path="res://personaje/sprites/platform.png" id="2_npa1n"]
+
+[sub_resource type="GDScript" id="GDScript_n6n70"]
+script/source = "extends CharacterBody2D
+
+
+@export var move_speed: float
+var is_facing_right = true
+
+func _physics_process(delta):
+	var input_axis = Input.get_axis(\"move_left\", \"move_right\")
+	velocity.x = input_axis * move_speed
+	
+	if (is_facing_right and velocity.x < 0) or ( not is_facing_right and velocity.x > 0):
+		scale.x *= -1
+		is_facing_right = not is_facing_right
+
+
+	move_and_slide()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxq76"]
+size = Vector2(378, 30)
+
+[node name="level1" type="Node2D"]
+script = SubResource("GDScript_n6n70")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(192, 253)
+texture = ExtResource("2_npa1n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(192, 254)
+shape = SubResource("RectangleShape2D_jxq76")

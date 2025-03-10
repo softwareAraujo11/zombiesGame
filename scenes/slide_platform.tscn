@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnafrm6ylkcnu"]
+
+[ext_resource type="Script" path="res://scenes/slide_platform.gd" id="1_1bn1r"]
+[ext_resource type="Texture2D" uid="uid://h6n7ykcytji3" path="res://BGTile (1).png" id="1_8w33u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kke5p"]
+size = Vector2(39, 3)
+
+[node name="slide_platform" type="StaticBody2D"]
+script = ExtResource("1_1bn1r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(217, 118)
+scale = Vector2(0.0878906, 0.0117187)
+texture = ExtResource("1_8w33u")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(232, 118)
+scale = Vector2(0.0937499, 0.0117187)
+texture = ExtResource("1_8w33u")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(236.5, 119.5)
+shape = SubResource("RectangleShape2D_kke5p")

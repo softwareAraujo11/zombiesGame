@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvnarrvywoduo"]
+
+[ext_resource type="Script" path="res://ramas.gd" id="1_n4wkq"]
+[ext_resource type="Texture2D" uid="uid://dpr6xcp0goin3" path="res://DeadBush.png" id="2_utm7m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lhhn"]
+size = Vector2(8, 8)
+
+[node name="ramas" type="Area2D"]
+script = ExtResource("1_n4wkq")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0757576, 0.108108)
+texture = ExtResource("2_utm7m")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6lhhn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
