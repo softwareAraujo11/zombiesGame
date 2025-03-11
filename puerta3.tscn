@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://by7taeotgs573"]
+
+[ext_resource type="Script" path="res://puerta3.gd" id="1_esshf"]
+[ext_resource type="Texture2D" uid="uid://dxf8ks014kh8s" path="res://DoorLocked.png" id="1_rmov5"]
+[ext_resource type="Texture2D" uid="uid://biqbl8jah8x4f" path="res://DoorOpen.png" id="2_n3ttd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_degbk"]
+atlas = ExtResource("1_rmov5")
+region = Rect2(0, 0, 280, 464)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gt7c"]
+atlas = ExtResource("2_n3ttd")
+region = Rect2(0, 0, 280, 464)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nth77"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_degbk")
+}],
+"loop": true,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gt7c")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n4ca"]
+size = Vector2(20, 39)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2tgmi"]
+font_size = 45
+
+[node name="Node2D" type="Area2D"]
+script = ExtResource("1_esshf")
+next_scene = "res://scenes/win.tscn"
+
+[node name="puerta" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.0785714, 0.0862069)
+sprite_frames = SubResource("SpriteFrames_nth77")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_7n4ca")
+
+[node name="winLabel" type="Label" parent="."]
+offset_left = 27.0
+offset_top = -39.0
+offset_right = 148.0
+offset_bottom = 17.0
+text = "Ganasteeeee!"
+label_settings = SubResource("LabelSettings_2tgmi")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

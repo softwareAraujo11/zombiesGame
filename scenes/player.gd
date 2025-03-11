@@ -20,7 +20,9 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if (Input.is_action_just_pressed("ui_accept") and is_on_floor()):
+		velocity.y = JUMP_VELOCITY
+	if (Input.is_action_just_pressed("ui_up") and is_on_floor()):
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -34,6 +36,9 @@ func _physics_process(delta):
 	if (is_facing_right and velocity.x < 0) or ( not is_facing_right and velocity.x > 0):
 		scale.x *= -1
 		is_facing_right = not is_facing_right
+	
+	if (global_position.y > 280):
+		game_over()
 	
 	update_animations()
 
@@ -59,4 +64,4 @@ func game_over():
 
 func add_score():
 	score += 1
-	score_text.text = str("Score: ", score)
+	score_text.text = str("Craneos: ", score)

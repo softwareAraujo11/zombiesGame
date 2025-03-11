@@ -195,5 +195,5 @@ shape = SubResource("RectangleShape2D_m4j02")
 offset_left = 9.0
 offset_right = 70.0
 offset_bottom = 23.0
-text = "Score: 0"
+text = "Craneos: 0"
 label_settings = SubResource("LabelSettings_yugt4")

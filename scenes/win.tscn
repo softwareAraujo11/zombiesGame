@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://shday5b7rws4"]
+
+[ext_resource type="Script" path="res://scenes/win.gd" id="1_lh77t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4wqd4"]
+font_size = 45
+
+[node name="win" type="Button"]
+action_mode = 0
+script = ExtResource("1_lh77t")
+main_scene = "res://scenes/level_1.tscn"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 51.0
+offset_top = 97.0
+offset_right = 407.0
+offset_bottom = 160.0
+text = "Ganasteeeee!!!!!!"
+label_settings = SubResource("LabelSettings_4wqd4")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 245.0
+offset_right = 358.0
+offset_bottom = 268.0
+text = "Presione \"Espacio\" para reiniciar juego"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
